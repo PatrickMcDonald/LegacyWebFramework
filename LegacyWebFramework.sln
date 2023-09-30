@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyWcfService", "LegacyWcfService\LegacyWcfService.csproj", "{86963315-D2BC-413D-B4A9-A447A579136E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWebApiServiceClient", "AspNetCoreWebApiServiceClient\AspNetCoreWebApiServiceClient.csproj", "{4408760F-132F-46C4-8D44-426E60237400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{86963315-D2BC-413D-B4A9-A447A579136E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86963315-D2BC-413D-B4A9-A447A579136E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86963315-D2BC-413D-B4A9-A447A579136E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4408760F-132F-46C4-8D44-426E60237400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4408760F-132F-46C4-8D44-426E60237400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4408760F-132F-46C4-8D44-426E60237400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4408760F-132F-46C4-8D44-426E60237400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
