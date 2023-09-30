@@ -13,6 +13,7 @@ namespace LegacyWcfService
             log.Info("LegacyWcfService Application started.");
 
             Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+            log4net.GlobalContext.Properties["activity"] = new TraceIdHelper();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -23,9 +24,6 @@ namespace LegacyWcfService
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             ActivityManager.StartActivity();
-
-            var traceId = ActivityManager.GetRequestId();
-            log4net.LogicalThreadContext.Properties["activity"] = traceId;
 
             log.Info("Application_BeginRequest");
         }

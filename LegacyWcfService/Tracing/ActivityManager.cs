@@ -18,7 +18,12 @@ namespace LegacyWcfService.Tracing
                     activity.SetParentId(parentIdFromHeaders);
                 }
 
-                Activity.Current = activity.Start();
+                activity.Start();
+
+                Activity.Current = activity;
+
+                // Also store the activity on the HttpContext
+                HttpContext.Current?.Items.Add("Activity", activity);
             }
         }
 
@@ -27,19 +32,13 @@ namespace LegacyWcfService.Tracing
             GetActivity()?.Stop();
         }
 
-        public static Activity GetActivity() => Activity.Current;
+        public static Activity GetActivity() => Activity.Current ?? HttpContext.Current?.Items["Activity"] as Activity;
 
         public static string GetRequestId()
         {
             Activity activity = GetActivity();
 
-            if (activity != null)
-            {
-                string activityId = activity.Id;
-                return activityId;
-            }
-
-            return null;
+            return activity?.Id;
         }
     }
 }
