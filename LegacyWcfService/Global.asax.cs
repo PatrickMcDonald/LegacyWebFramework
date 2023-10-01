@@ -1,6 +1,4 @@
 using System;
-using System.Diagnostics;
-using LegacyWcfService.Tracing;
 
 namespace LegacyWcfService
 {
@@ -11,9 +9,6 @@ namespace LegacyWcfService
         protected void Application_Start(object sender, EventArgs e)
         {
             log.Info("LegacyWcfService Application started.");
-
-            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
-            log4net.GlobalContext.Properties["activity"] = new TraceIdHelper();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -23,16 +18,12 @@ namespace LegacyWcfService
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            ActivityManager.StartActivity();
-
             log.Info("Application_BeginRequest");
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)
         {
             log.Info("Application_EndRequest");
-
-            ActivityManager.StopActivity();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -52,6 +43,7 @@ namespace LegacyWcfService
 
         protected void Application_End(object sender, EventArgs e)
         {
+            log.Info("Application_End");
         }
     }
 }

@@ -34,11 +34,6 @@ namespace LegacyWcfService.Tracing
 
         public static Activity GetActivity() => Activity.Current ?? HttpContext.Current?.Items["Activity"] as Activity;
 
-        public static string GetRequestId()
-        {
-            Activity activity = GetActivity();
-
-            return activity?.Id;
-        }
+        public static string GetTraceId() => GetActivity()?.Id;
     }
 }

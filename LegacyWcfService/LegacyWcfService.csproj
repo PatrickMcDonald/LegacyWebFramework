@@ -103,6 +103,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tracing\ActivityManager.cs" />
     <Compile Include="Tracing\TraceIdHelper.cs" />
+    <Compile Include="Tracing\TracingModule.cs" />
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>

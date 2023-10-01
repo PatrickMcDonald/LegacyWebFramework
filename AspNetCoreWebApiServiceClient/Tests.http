@@ -1,0 +1,8 @@
+###
+GET https://localhost:7084/User/Paddy
+
+###
+GET https://localhost:7084/User/Async/async
+
+###
+GET https://localhost:7084/User/Parallel/4

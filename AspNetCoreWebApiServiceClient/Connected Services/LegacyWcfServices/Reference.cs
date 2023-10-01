@@ -56,6 +56,12 @@ namespace LegacyWcfServices
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserInfo", ReplyAction="http://tempuri.org/IUserService/GetUserInfoResponse")]
         System.Threading.Tasks.Task<LegacyWcfServices.UserInfo> GetUserInfoAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AsyncMethod", ReplyAction="http://tempuri.org/IUserService/AsyncMethodResponse")]
+        System.Threading.Tasks.Task AsyncMethodAsync(string request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/ParallelMethod", ReplyAction="http://tempuri.org/IUserService/ParallelMethodResponse")]
+        System.Threading.Tasks.Task ParallelMethodAsync(int count);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
@@ -111,6 +117,16 @@ namespace LegacyWcfServices
         public System.Threading.Tasks.Task<LegacyWcfServices.UserInfo> GetUserInfoAsync(string userName)
         {
             return base.Channel.GetUserInfoAsync(userName);
+        }
+        
+        public System.Threading.Tasks.Task AsyncMethodAsync(string request)
+        {
+            return base.Channel.AsyncMethodAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task ParallelMethodAsync(int count)
+        {
+            return base.Channel.ParallelMethodAsync(count);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
