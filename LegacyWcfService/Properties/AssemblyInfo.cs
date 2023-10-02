@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LegacyWcfService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("McDonald Consulting Ltd.")]
 [assembly: AssemblyProduct("LegacyWcfService")]
-[assembly: AssemblyCopyright("Copyright © McDonald Consulting 2023")]
+[assembly: AssemblyCopyright("Copyright © McDonald Consulting Ltd. 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
