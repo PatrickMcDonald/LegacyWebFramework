@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace LegagyConsoleApp
 
         static void Main(string[] args)
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
             StartActivity();
 
             MainAsync(args).GetAwaiter().GetResult();
@@ -42,12 +44,15 @@ namespace LegagyConsoleApp
 
         private static void StartActivity()
         {
+            var activity = new Activity("Console activity");
+            Activity.Current = activity.Start();
+
             AsyncLocal.Value = Guid.NewGuid();
         }
 
         private static void WriteDebug(string title)
         {
-            Console.WriteLine("{0,-9} {1} {2}", title, Thread.CurrentThread.ManagedThreadId, AsyncLocal.Value);
+            Console.WriteLine("{0,-9} {1} {2} {3}", title, Thread.CurrentThread.ManagedThreadId, AsyncLocal.Value, Activity.Current.Id);
         }
     }
 }
