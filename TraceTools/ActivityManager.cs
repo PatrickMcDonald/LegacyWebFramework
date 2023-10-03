@@ -1,28 +1,42 @@
-using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Diagnostics;
+using System.Web;
 
 namespace TraceTools
 {
     public static class ActivityManager
     {
-        private static readonly AsyncLocal<string> TraceId = new AsyncLocal<string>();
+        public static void Init()
+        {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+        }
 
         public static void StartActivity()
         {
-            TraceId.Value = Guid.NewGuid().ToString();
+            if (Activity.Current == null)
+            {
+                var activity = new Activity("Trace Activity");
+
+                var parentId = HttpContext.Current.Request.Headers["traceparent"];
+                if (parentId != null)
+                {
+                    activity.SetParentId(parentId);
+                }
+
+                Activity.Current = activity.Start();
+            }
         }
 
         public static void StopActivity()
         {
-            TraceId.Value = null;
+            Activity.Current = null;
         }
 
         public static void Log(string title, IList<object> result)
         {
-            result.Add(new { Title = title, TraceId = TraceId.Value });
+            result.Add(new { Title = title, TraceId = GetTraceId() });
         }
 
-        public static string GetTraceId() => TraceId.Value;
+        public static string GetTraceId() => Activity.Current?.Id;
     }
 }

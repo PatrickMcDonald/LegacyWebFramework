@@ -1,0 +1,5 @@
+GET https://localhost:44327/api/values
+
+###
+GET https://localhost:44327/api/values
+traceparent: 00-4ff04f48a220b8918b3791cfe1cdc293-d51bc62221c78291-00
