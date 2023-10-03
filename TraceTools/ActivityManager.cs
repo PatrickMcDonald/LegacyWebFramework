@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
 
@@ -30,11 +29,6 @@ namespace TraceTools
         public static void StopActivity()
         {
             Activity.Current = null;
-        }
-
-        public static void Log(string title, IList<object> result)
-        {
-            result.Add(new { Title = title, TraceId = GetTraceId() });
         }
 
         public static string GetTraceId() => Activity.Current?.Id;

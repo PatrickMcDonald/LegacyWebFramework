@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="ActivityManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TraceIdentifierSource.cs" />
     <Compile Include="TraceModule.cs" />
   </ItemGroup>
   <ItemGroup>
